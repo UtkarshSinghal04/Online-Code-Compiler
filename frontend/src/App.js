@@ -52,7 +52,10 @@ function App() {
       setJobStatus('');
       setJobDetails({});
 
-      const response = await axios.post('http://localhost:3000/code/run', payload);
+      const LocalUrl = "http://localhost:3000"
+      const RenderUrl = "https://online-code-compiler-at9z.onrender.com"
+
+      const response = await axios.post('RenderUrl/code/run', payload);
 
       if (response.data.jobId) {
         const newJobId = response.data.jobId;
@@ -61,7 +64,7 @@ function App() {
 
         //polling
         const pollInterval = setInterval(async () => {
-          const response = await axios.get(`http://localhost:3000/code/status`, {
+          const response = await axios.get(`RenderUrl/code/status`, {
             params: {
               jobId: newJobId
             }
