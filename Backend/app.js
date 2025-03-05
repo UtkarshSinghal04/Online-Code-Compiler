@@ -8,7 +8,10 @@ const port = process.env.PORT;  // 🔹 REMOVE DEFAULT VALUE (Render assigns thi
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+    origin: 'https://online-code-compiler-zjt7-a7d6bgnk9-utkarsh-singhals-projects.vercel.app/',
+    methods: ['GET', 'POST']
+  }));
 
 const CodeRouter = require('./Routes/routes');
 app.use('/code', CodeRouter);
